@@ -5,13 +5,13 @@
  */
 class H5peditorFile {
   private $result, $field, $interface;
-  public $type, $name, $path, $mime, $size;
+  public $type, $name, $path, $mime, $size, $extension;
 
   /**
    * Constructor. Process data for file uploaded through the editor.
    */
   function __construct($interface) {
-    $field = filter_input(INPUT_POST, 'field', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+    $field = filter_input(INPUT_POST, 'field', FILTER_DEFAULT);
 
     // Check for file upload.
     if ($field === NULL || empty($_FILES) || !isset($_FILES['file'])) {
